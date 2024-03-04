@@ -314,8 +314,8 @@ namespace argos
       printf("RSM***** Size*****%d\n", unDataSize);
       m_pcRABEquippedEntityDefault = new CRABEquippedEntity(this,
                                                             "rab_0",
-                                                            500,
-                                                            0.4f,
+                                                            unDataSize,
+                                                            fRange,
                                                             m_pcEmbodiedEntity->GetOriginAnchor(),
                                                             *m_pcEmbodiedEntity,
                                                             CVector3(0.0f, 0.0f, RAB_ELEVATION));
