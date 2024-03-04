@@ -20,7 +20,6 @@ namespace argos {
    class CProximitySensorEquippedEntity;
    class CEPuckBatteryEquippedEntity;
    class CRABEquippedEntity;
-   class CEpuckRABEquippedEntity;
 }
 
 #include <argos3/core/simulator/entity/composable_entity.h>
@@ -42,9 +41,7 @@ namespace argos {
       CEPuckEntity(const std::string& str_id,
                      const std::string& str_controller_id,
                      const CVector3& c_position = CVector3(),
-                     const CQuaternion& c_orientation = CQuaternion(),
-                     Real f_rab_range = 3.0f,
-                     size_t un_rab_data_size = 10);
+                     const CQuaternion& c_orientation = CQuaternion());
 
 
       virtual void Init(TConfigurationNode& t_tree);
@@ -85,9 +82,6 @@ namespace argos {
       inline CEpuckRABEquippedEntity& GetRABEquippedEntity() {
          return *m_pcRABEquippedEntity;
       }
-      inline CRABEquippedEntity& GetRABEquippedEntityDefault() {
-         return *m_pcRABEquippedEntityDefault;
-      }
 
       inline CRABEquippedEntity& GetIRComEquippedEntity() {
          return *m_pcIRComEquippedEntity;
@@ -115,9 +109,9 @@ namespace argos {
       CProximitySensorEquippedEntity*        m_pcProximitySensorEquippedEntity;
       CEPuckBatteryEquippedEntity*        m_pcBatteryEquippedEntity;
       CEpuckRABEquippedEntity*                    m_pcRABEquippedEntity;
-      CRABEquippedEntity* m_pcRABEquippedEntityDefault;
       CRABEquippedEntity*                    m_pcIRComEquippedEntity;
       CWheeledEntity*                        m_pcWheeledEntity;
+      CRABEquippedEntity* m_pcRABEquippedEntityDefault;
    public:
       static const Real BODY_RADIUS                ;
       static const Real BODY_HEIGHT                ;

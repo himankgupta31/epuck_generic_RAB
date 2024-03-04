@@ -21,11 +21,14 @@ namespace argos {
 #include <argos3/core/utility/math/rng.h>
 #include <argos3/core/simulator/space/space.h>
 #include <argos3/plugins/robots/e-puck/simulator/epuck_rab_equipped_entity.h>
+#include <argos3/plugins/simulator/entities/rab_equipped_entity.h>
 #include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_range_and_bearing_sensor.h>
+#include <argos3/plugins/robots/generic/control_interface/ci_range_and_bearing_actuator.h>
+#include <argos3/plugins/robots/generic/control_interface/ci_range_and_bearing_sensor.h>
 
 namespace argos {
 
-   class CEPuckRABDefaultSensor : public CSimulatedSensor, public CCI_EPuckRangeAndBearingSensor {
+   class CEPuckRABDefaultSensor : public CSimulatedSensor, public CCI_EPuckRangeAndBearingSensor, public CCI_RangeAndBearingSensor {
 
    public:
 
@@ -41,6 +44,9 @@ namespace argos {
    private:
 
       CEpuckRABEquippedEntity*  m_pcRangeAndBearingEquippedEntity;
+
+      CRABEquippedEntity*  m_pcRangeAndBearingEquippedEntityDefault;
+
       CControllableEntity* m_pcControllableEntity;
       CRABMedium*          m_pcRangeAndBearingMedium;
       Real                 m_fDistanceNoiseStdDev;
@@ -50,6 +56,7 @@ namespace argos {
 
       bool                 m_bRealRangeNoise;
       Real                 m_fLossProbability;
+      Real                 m_fPacketDropProb;
       UInt32               m_uMaxNumberOfMessages;
       std::vector<std::pair<Real,Real> > m_cMuValues,m_cSigmaValues;// The values of the conversion function for each distance.
       Real m_fExpA,m_fExpB; //The conversion between POWER (from the hw) and DISTANCE is done using the function DISTANCE(POWER)=exp(a+ b* POWER)

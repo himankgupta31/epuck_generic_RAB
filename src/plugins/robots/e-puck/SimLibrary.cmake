@@ -10,6 +10,7 @@ set(ARGOS3_HEADERS_PLUGINS_ROBOTS_EPUCK_SIMULATOR
   simulator/epuck_rgb_leds_default_actuator.h
   simulator/epuck_wheels_default_actuator.h
   simulator/epuck_range_and_bearing_default_actuator.h
+  simulator/range_and_bearing_default_actuator.h
   simulator/epuck_virtual_camrab_default_actuator.h
   simulator/epuck_virtual_camrab_default_sensor.h
   simulator/epuck_ircom_default_actuator.h
@@ -21,11 +22,13 @@ set(ARGOS3_HEADERS_PLUGINS_ROBOTS_EPUCK_SIMULATOR
   simulator/epuck_ircom_default_sensor.h
   simulator/epuck_ground_rotzonly_sensor.h
   simulator/epuck_rab_equipped_entity.h)
-if(ARGOS_COMPILE_QTOPENGL)
+# if(ARGOS_COMPILE_QTOPENGL)
+if(ARGOS_QTOPENGL_FOUND)
   set(ARGOS3_HEADERS_PLUGINS_ROBOTS_EPUCK_SIMULATOR
     ${ARGOS3_HEADERS_PLUGINS_ROBOTS_EPUCK_SIMULATOR}
     simulator/qtopengl_epuck.h)
-endif(ARGOS_COMPILE_QTOPENGL)
+# endif(ARGOS_COMPILE_QTOPENGL)
+endif(ARGOS_QTOPENGL_FOUND)
 
 # Install location for the e-puck simulator headers
 install(
@@ -43,6 +46,7 @@ set(ARGOS3_SOURCES_PLUGINS_ROBOTS_EPUCK
   simulator/epuck_rgb_leds_default_actuator.cpp
   simulator/epuck_wheels_default_actuator.cpp
   simulator/epuck_range_and_bearing_default_actuator.cpp
+  simulator/range_and_bearing_default_actuator.cpp
   simulator/epuck_virtual_camrab_default_actuator.cpp
   simulator/epuck_virtual_camrab_default_sensor.cpp
   simulator/epuck_ircom_default_actuator.cpp
@@ -54,11 +58,13 @@ set(ARGOS3_SOURCES_PLUGINS_ROBOTS_EPUCK
   simulator/epuck_ircom_default_sensor.cpp
   simulator/epuck_ground_rotzonly_sensor.cpp
   simulator/epuck_rab_equipped_entity.cpp)
-if(ARGOS_COMPILE_QTOPENGL)
+# if(ARGOS_COMPILE_QTOPENGL)
+if(ARGOS_QTOPENGL_FOUND)
   set(ARGOS3_SOURCES_PLUGINS_ROBOTS_EPUCK
     ${ARGOS3_SOURCES_PLUGINS_ROBOTS_EPUCK}
     simulator/qtopengl_epuck.cpp)
-endif(ARGOS_COMPILE_QTOPENGL)
+# endif(ARGOS_COMPILE_QTOPENGL)
+endif(ARGOS_QTOPENGL_FOUND)
 
 #
 # Create e-puck plugin
@@ -71,10 +77,12 @@ target_link_libraries(argos3plugin_${ARGOS_BUILD_FOR}_epuck
   argos3core_${ARGOS_BUILD_FOR}
   argos3plugin_${ARGOS_BUILD_FOR}_genericrobot
   argos3plugin_${ARGOS_BUILD_FOR}_dynamics2d)
-if(ARGOS_COMPILE_QTOPENGL)
+# if(ARGOS_COMPILE_QTOPENGL)
+if(ARGOS_QTOPENGL_FOUND)
   target_link_libraries(argos3plugin_${ARGOS_BUILD_FOR}_epuck
     argos3plugin_${ARGOS_BUILD_FOR}_qtopengl)
-endif(ARGOS_COMPILE_QTOPENGL)
+# endif(ARGOS_COMPILE_QTOPENGL)
+endif(ARGOS_QTOPENGL_FOUND)
 
 # Install location for the e-puck plugin
 install(TARGETS argos3plugin_${ARGOS_BUILD_FOR}_epuck

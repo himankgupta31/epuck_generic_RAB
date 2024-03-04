@@ -17,10 +17,11 @@ namespace argos {
 #include <argos3/core/utility/datatypes/byte_array.h>
 #include <argos3/plugins/robots/e-puck/simulator/epuck_rab_equipped_entity.h>
 #include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_range_and_bearing_actuator.h>
+#include <argos3/plugins/robots/generic/control_interface/ci_range_and_bearing_actuator.h>
 
 namespace argos {
 
-   class CEPuckRABDefaultActuator : public CSimulatedActuator, public CCI_EPuckRangeAndBearingActuator {
+   class CEPuckRABDefaultActuator : public CSimulatedActuator, public CCI_EPuckRangeAndBearingActuator, public CCI_RangeAndBearingActuator {
 
    public:
 
@@ -35,6 +36,7 @@ namespace argos {
    private:
 
       CEpuckRABEquippedEntity* m_pcRangeAndBearingEquippedEntity;
+      CRABEquippedEntity* m_pcRangeAndBearingEquippedEntityDefault;
 
    };
 

@@ -15,7 +15,10 @@
 #include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_omnidirectional_camera_sensor.h>
 #include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_range_and_bearing_sensor.h>
 #include <argos3/plugins/robots/e-puck/control_interface/ci_epuck_range_and_bearing_actuator.h>
-namespace argos {
+#include <argos3/plugins/robots/generic/control_interface/ci_range_and_bearing_actuator.h>
+#include <argos3/plugins/robots/generic/control_interface/ci_range_and_bearing_sensor.h>
+   namespace argos {
+   
    class CEPuckController : public CCI_Controller {
      public:
 
@@ -46,14 +49,18 @@ namespace argos {
       CCI_EPuckRGBLEDsActuator* m_pcRGBLEDsActuator;
       CCI_EPuckRangeAndBearingActuator* m_pcRABActuator;
 
+      CCI_RangeAndBearingActuator* m_pcRABActuatorDefault;
+
       CCI_EPuckProximitySensor* m_pcProximitySensor;
       CCI_EPuckIRComSensor* m_pcIRComSensor;
       CCI_EPuckRangeAndBearingSensor* m_pcRABSensor;
+
+      CCI_RangeAndBearingSensor* m_pcRABS;
 
       /* Pointer to the omnidirectional camera sensor */
       CCI_EPuckOmnidirectionalCameraSensor* m_pcCamera;
 
    };
-};
+   };
 
 #endif

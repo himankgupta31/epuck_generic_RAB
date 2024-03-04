@@ -19,6 +19,12 @@ void CEPuckRABDefaultActuator::SetRobot(CComposableEntity& c_entity) {
     m_pcRangeAndBearingEquippedEntity = &c_entity.GetComponent<CEpuckRABEquippedEntity>("epuck_rab[epuck_rab_0]");
     m_pcRangeAndBearingEquippedEntity->Enable();
     m_pcRangeAndBearingEquippedEntity->SetDataSize(m_uDataSize);
+    printf("Inside Defualt EPuck RAB");
+    //  m_pcRangeAndBearingEquippedEntityDefault = &c_entity.GetComponent<CRABEquippedEntity>("rab");
+    //  m_pcRangeAndBearingEquippedEntityDefault->Enable();
+    // m_cData.Resize(m_pcRangeAndBearingEquippedEntityDefault->GetMsgSize());
+
+
 }
 
 /****************************************/
@@ -29,6 +35,9 @@ void CEPuckRABDefaultActuator::Init(TConfigurationNode& t_tree) {
     Real fRange=0.8f;
     GetNodeAttributeOrDefault(t_tree, "range", fRange,fRange);
     m_pcRangeAndBearingEquippedEntity->SetRange(fRange);
+
+    // CCI_RangeAndBearingActuator::Init(t_tree);
+    // m_pcRangeAndBearingEquippedEntityDefault->SetRange(fRange);
 }
 
 /****************************************/
@@ -36,6 +45,7 @@ void CEPuckRABDefaultActuator::Init(TConfigurationNode& t_tree) {
 
 void CEPuckRABDefaultActuator::Update() {
     m_pcRangeAndBearingEquippedEntity->SetDataToSend(m_sDesiredData);
+    // m_pcRangeAndBearingEquippedEntityDefault->SetData(m_cData);
 }
 
 /****************************************/
